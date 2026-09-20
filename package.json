@@ -2,7 +2,7 @@
   "name": "ember-dusk-yasowant",
   "displayName": "Dusk Forge",
   "description": "Dusk Forge dark and light themes for MERN and MEAN developers: React, Angular, Node.js, Express, MongoDB and PostgreSQL. Clear syntax, readable document keys and distinct HTTP method colours.",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "publisher": "yasowant",
   "license": "MIT",
   "icon": "images/icon.png",

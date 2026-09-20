@@ -1,3 +1,10 @@
+# 1.2.2
+
+- Fixed generic semantic method colours overriding GET, POST, PUT, PATCH and DELETE colours by making semantic overlays opt-in in both themes.
+- Preserved optional semantic palettes and all language grammars. IntelliSense and diagnostics are unaffected.
+- Added instructions for existing user or workspace semantic highlighting overrides.
+- Verified HTTP token colours with VS Code TextMate grammars for JavaScript, JSX, TypeScript and TSX in both themes.
+
 # 1.2.1
 
 - Added explicit SQL and PostgreSQL scope colours for statements, types, constraints, functions and parameters.

@@ -30,7 +30,7 @@ Open **Preferences: Color Theme** and select **Dusk Forge Dark** or **Dusk Forge
 - Readable comments, restrained surfaces, visible keyboard focus and active tabs.
 - Search match borders, selection overlays, bracket colours and inlay hints.
 - Coordinated Git decorations, diffs, diagnostics, terminal colours and autocomplete menus.
-- TextMate and semantic highlighting for supported language extensions.
+- TextMate syntax highlighting by default, with optional semantic colour definitions for supported language extensions.
 
 All configured syntax and semantic foreground colours meet a measured contrast ratio of at least 4.5:1 against their base editor background. This does not certify every UI state or colour-vision accessibility. Highlighting also depends on the language extension and user overrides.
 
@@ -46,7 +46,7 @@ The included grammar injections assign distinct scopes to supported HTTP pattern
 | PATCH | Purple |
 | DELETE | Red |
 
-Supported patterns include common router calls, fetch method strings, axios calls, Next.js route handlers and `.http` files. The method names remain visible, so colour is an additional cue. Language server semantic tokens can take precedence over grammar scopes in some contexts.
+Supported patterns include common router calls, fetch method strings, axios calls, Next.js route handlers and `.http` files. The method names remain visible, so colour is an additional cue. Both themes default to grammar highlighting so generic language-server method colours do not overwrite these distinct HTTP colours.
 
 React hook, Next.js API and `use client` / `use server` scopes are preserved from the previous release.
 
@@ -71,3 +71,18 @@ React hook, Next.js API and `use client` / `use server` scopes are preserved fro
 ## License
 
 MIT
+
+## HTTP colours troubleshooting
+
+Version 1.2.2 fixes the default semantic overlay that made HTTP methods share the same function colour. After updating, run **Developer: Reload Window** and select **Dusk Forge Dark** or **Dusk Forge Light**.
+
+If your user or workspace settings explicitly force semantic highlighting on, use this theme-specific setting in your VS Code settings JSON:
+
+```json
+"editor.semanticTokenColorCustomizations": {
+  "[Dusk Forge Dark]": { "enabled": false },
+  "[Dusk Forge Light]": { "enabled": false }
+}
+```
+
+Merge these entries into any existing setting rather than replacing your other customizations. Semantic highlighting is optional: turning it on can override the method-specific grammar colours. This does not disable IntelliSense, type checking or diagnostics.
