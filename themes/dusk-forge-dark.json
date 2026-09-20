@@ -1001,6 +1001,98 @@
       "settings": {
         "foreground": "#A8CC8C"
       }
+    },
+    {
+      "name": "Object and document keys",
+      "scope": [
+        "meta.object-literal.key",
+        "support.variable.property",
+        "variable.other.object.property",
+        "variable.other.property",
+        "support.type.property-name.json"
+      ],
+      "settings": {
+        "foreground": "#8FBDF2"
+      }
+    },
+    {
+      "name": "SQL and PostgreSQL statement keywords",
+      "scope": [
+        "keyword.other.sql",
+        "keyword.other.pgsql"
+      ],
+      "settings": {
+        "foreground": "#F0A078"
+      }
+    },
+    {
+      "name": "SQL data types",
+      "scope": [
+        "storage.type.sql"
+      ],
+      "settings": {
+        "foreground": "#7DCDBB"
+      }
+    },
+    {
+      "name": "SQL constraints",
+      "scope": [
+        "storage.modifier.sql"
+      ],
+      "settings": {
+        "foreground": "#C6A5EF"
+      }
+    },
+    {
+      "name": "SQL functions",
+      "scope": [
+        "support.function.sql",
+        "entity.name.function.sql",
+        "entity.name.function.pgsql"
+      ],
+      "settings": {
+        "foreground": "#EBC27C"
+      }
+    },
+    {
+      "name": "SQL parameters and identifiers",
+      "scope": [
+        "text.variable",
+        "text.bracketed",
+        "variable.other.pgsql"
+      ],
+      "settings": {
+        "foreground": "#8FBDF2"
+      }
+    },
+    {
+      "name": "PostgreSQL dollar-quoted strings",
+      "scope": [
+        "string.unquoted.dollar.pgsql"
+      ],
+      "settings": {
+        "foreground": "#A8CC8C"
+      }
+    },
+    {
+      "name": "TypeScript decorators",
+      "scope": [
+        "entity.name.function.decorator",
+        "meta.decorator variable.other.readwrite",
+        "punctuation.decorator"
+      ],
+      "settings": {
+        "foreground": "#EBC27C"
+      }
+    },
+    {
+      "name": "HTML attributes and Angular template attribute fallback",
+      "scope": [
+        "entity.other.attribute-name.html"
+      ],
+      "settings": {
+        "foreground": "#8FBDF2"
+      }
     }
   ],
   "semanticTokenColors": {
@@ -1009,9 +1101,9 @@
     "variable.readonly.defaultLibrary": "#7DCDBB",
     "parameter": "#C7D3E4",
     "parameter.declaration": "#C7D3E4",
-    "property": "#DCE4EE",
-    "property.declaration": "#DCE4EE",
-    "property.readonly": "#DCE4EE",
+    "property": "#8FBDF2",
+    "property.declaration": "#8FBDF2",
+    "property.readonly": "#8FBDF2",
     "function": "#EBC27C",
     "function.declaration": "#EBC27C",
     "function.defaultLibrary": "#7DCDBB",
@@ -1030,12 +1122,13 @@
     "type.defaultLibrary": "#91D7CB",
     "typeParameter": "#91D7CB",
     "namespace": "#8FBDF2",
-    "decorator": "#8FBDF2",
+    "decorator": "#EBC27C",
     "macro": "#8FBDF2",
     "event": "#F0A078",
     "regexp": "#F2B58D",
     "*.deprecated": {
       "fontStyle": "strikethrough"
-    }
+    },
+    "method.defaultLibrary": "#EBC27C"
   }
 }
