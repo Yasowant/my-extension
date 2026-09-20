@@ -1,3 +1,11 @@
+# 1.4.0
+
+- Added on-demand highlighting troubleshooting and developer setup commands.
+- Added current-file diagnostic navigation, Problems panel access and review-only Quick Fix picker.
+- Added seven editable snippets for Express, fetch, React and PostgreSQL workflows.
+- Added command tests for empty editors, no diagnostics, cancellation, navigation and setup behavior.
+- Both existing themes and grammar colours remain unchanged.
+
 # 1.3.0
 
 - Removed slash-only HTTP detection to avoid colouring Map and ordinary object methods as requests.

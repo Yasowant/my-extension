@@ -111,3 +111,29 @@ Open [examples](https://github.com/Yasowant/my-extension/tree/main/examples) in 
 Run `npm ci` and `npm test`; see [test instructions](tests/README.md) for grammar locations. The automated suite covers real VS Code grammars and contrast over editor overlays. It does not certify every UI combination or replace real-project testing.
 
 For a useful report include your VS Code/extension version, language mode, active theme, minimal code sample and output from **Developer: Inspect Editor Tokens and Scopes**. Check user/workspace token overrides before reporting. Never include credentials.
+
+## Developer toolkit (1.4.0)
+
+Open the Command Palette and type **Dusk Forge**:
+
+- **Check Highlighting**: read the active theme, language mode and highlighting settings, then show troubleshooting guidance. No settings are changed.
+- **Developer Setup**: guidance for built-in JavaScript/TypeScript support, ESLint, Angular, SQL and snippets. Extension links open their details page; nothing is installed automatically.
+- **Current File Problems**: list existing errors and warnings from installed language tools, navigate to one, and open the normal Quick Fix picker. No fixes are automatically applied.
+- **Show Quick Fixes**: show available fixes at the cursor for you to review.
+- **Open Problems Panel**: open VS Code's workspace Problems view.
+
+Snippets: type `df` and trigger suggestions, or use **Snippets: Insert Snippet**.
+
+| Prefix | File type | Starting point |
+| --- | --- | --- |
+| dfroute | JS / TS | Express async route with error forwarding |
+| dffetch | JS / TS | JSON fetch helper with HTTP status check |
+| dfquery | JS / TS | Parameterized node-postgres query |
+| dfreact | JSX | React component |
+| dfreactts | TSX | Typed React component |
+| dfselect | SQL | SELECT with filter, ordering and limit |
+| dftransaction | SQL | Transaction skeleton ending in ROLLBACK |
+
+Review snippet placeholders and adapt them to your project. The query snippet requires an existing database client and async context. Snippets do not install libraries or execute queries.
+
+The toolkit runs only when its commands are invoked. It has no network requests, telemetry, database access or background project scanning. Diagnostics and fixes come from installed language tools; Dusk Forge does not independently discover application bugs. A clean Problems list is not proof that code is correct.
