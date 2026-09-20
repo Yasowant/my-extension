@@ -3,90 +3,205 @@
   "scopeName": "ember-dusk.http-verbs.injection",
   "injectionSelector": "L:source.js -comment -string, L:source.jsx -comment -string, L:source.js.jsx -comment -string, L:source.ts -comment -string, L:source.tsx -comment -string, L:source.mts -comment -string, L:source.cts -comment -string",
   "patterns": [
-    { "include": "#nextjs-route-handler" },
-    { "include": "#method-option" },
-    { "include": "#router-verb" },
-    { "include": "#route-path-verb" },
-    { "include": "#react-hook" },
-    { "include": "#nextjs-api" }
+    {
+      "include": "#route-chain"
+    },
+    {
+      "include": "#nextjs-route-handler"
+    },
+    {
+      "include": "#method-option"
+    },
+    {
+      "include": "#router-verb"
+    },
+    {
+      "include": "#react-hook"
+    },
+    {
+      "include": "#nextjs-api"
+    }
   ],
   "repository": {
-
     "nextjs-route-handler": {
       "comment": "Next.js App Router: export async function GET(req) {} in route.ts",
       "match": "\\b(export)\\s+(?:(async)\\s+)?(function)\\s+(?:(GET)|(POST)|(PUT)|(PATCH)|(DELETE)|(HEAD|OPTIONS))\\b",
       "captures": {
-        "1": { "name": "keyword.control.export.ts" },
-        "2": { "name": "storage.modifier.async.ts" },
-        "3": { "name": "storage.type.function.ts" },
-        "4": { "name": "entity.name.function.http-verb.get.ember" },
-        "5": { "name": "entity.name.function.http-verb.post.ember" },
-        "6": { "name": "entity.name.function.http-verb.put.ember" },
-        "7": { "name": "entity.name.function.http-verb.patch.ember" },
-        "8": { "name": "entity.name.function.http-verb.delete.ember" },
-        "9": { "name": "entity.name.function.http-verb.other.ember" }
+        "1": {
+          "name": "keyword.control.export.ts"
+        },
+        "2": {
+          "name": "storage.modifier.async.ts"
+        },
+        "3": {
+          "name": "storage.type.function.ts"
+        },
+        "4": {
+          "name": "entity.name.function.http-verb.get.ember"
+        },
+        "5": {
+          "name": "entity.name.function.http-verb.post.ember"
+        },
+        "6": {
+          "name": "entity.name.function.http-verb.put.ember"
+        },
+        "7": {
+          "name": "entity.name.function.http-verb.patch.ember"
+        },
+        "8": {
+          "name": "entity.name.function.http-verb.delete.ember"
+        },
+        "9": {
+          "name": "entity.name.function.http-verb.other.ember"
+        }
       }
     },
-
     "method-option": {
       "comment": "fetch(url, { method: 'POST' }) and axios({ method: 'PUT' })",
       "match": "\\b(method)\\s*(:)\\s*(['\"`])(?:(GET|get)|(POST|post)|(PUT|put)|(PATCH|patch)|(DELETE|delete)|(HEAD|OPTIONS|head|options))\\3",
       "captures": {
-        "1": { "name": "meta.object-literal.key.ts" },
-        "2": { "name": "punctuation.separator.key-value.ts" },
-        "3": { "name": "punctuation.definition.string.ts" },
-        "4": { "name": "constant.language.http-verb.get.ember" },
-        "5": { "name": "constant.language.http-verb.post.ember" },
-        "6": { "name": "constant.language.http-verb.put.ember" },
-        "7": { "name": "constant.language.http-verb.patch.ember" },
-        "8": { "name": "constant.language.http-verb.delete.ember" },
-        "9": { "name": "constant.language.http-verb.other.ember" }
+        "1": {
+          "name": "meta.object-literal.key.ts"
+        },
+        "2": {
+          "name": "punctuation.separator.key-value.ts"
+        },
+        "3": {
+          "name": "punctuation.definition.string.ts"
+        },
+        "4": {
+          "name": "constant.language.http-verb.get.ember"
+        },
+        "5": {
+          "name": "constant.language.http-verb.post.ember"
+        },
+        "6": {
+          "name": "constant.language.http-verb.put.ember"
+        },
+        "7": {
+          "name": "constant.language.http-verb.patch.ember"
+        },
+        "8": {
+          "name": "constant.language.http-verb.delete.ember"
+        },
+        "9": {
+          "name": "constant.language.http-verb.other.ember"
+        }
       }
     },
-
     "router-verb": {
       "comment": "app.get(...), router.post(...), axios.delete(...), apiClient.put(...)",
-      "match": "\\b([A-Za-z_$][\\w$]*(?:[Rr]outer|[Aa]pp|[Aa]pi|[Cc]lient|[Ss]erver|[Aa]gent|[Ii]nstance|[Hh]ttp|[Ff]etcher|[Rr]equest)|app|router|api|server|axios|http|https|request|agent|client|instance|supertest|superagent)\\s*(\\.)\\s*(?:(get)|(post)|(put)|(patch)|(delete|del)|(head|options|all))\\b(?=\\s*[<(])",
+      "match": "\\b((?:app|router|axios|api|server|http|https|request|agent|client|instance|supertest|superagent|[A-Za-z_$][\\w$]*(?:Router|App|Api|Client|Server|Agent|Instance|Http|Fetcher|Request)))\\s*(\\?\\.|\\.)\\s*(?:(get)|(post)|(put)|(patch)|(delete|del)|(head|options|all))\\b(?=\\s*[<(])",
       "captures": {
-        "1": { "name": "variable.other.object.ts" },
-        "2": { "name": "punctuation.accessor.ts" },
-        "3": { "name": "entity.name.function.http-verb.get.ember" },
-        "4": { "name": "entity.name.function.http-verb.post.ember" },
-        "5": { "name": "entity.name.function.http-verb.put.ember" },
-        "6": { "name": "entity.name.function.http-verb.patch.ember" },
-        "7": { "name": "entity.name.function.http-verb.delete.ember" },
-        "8": { "name": "entity.name.function.http-verb.other.ember" }
+        "1": {
+          "name": "variable.other.object.ts"
+        },
+        "2": {
+          "name": "punctuation.accessor.ts"
+        },
+        "3": {
+          "name": "entity.name.function.http-verb.get.ember"
+        },
+        "4": {
+          "name": "entity.name.function.http-verb.post.ember"
+        },
+        "5": {
+          "name": "entity.name.function.http-verb.put.ember"
+        },
+        "6": {
+          "name": "entity.name.function.http-verb.patch.ember"
+        },
+        "7": {
+          "name": "entity.name.function.http-verb.delete.ember"
+        },
+        "8": {
+          "name": "entity.name.function.http-verb.other.ember"
+        }
       }
     },
-
-    "route-path-verb": {
-      "comment": "Any .verb() whose first argument is a route string starting with / — catches v1.get('/users'), instance.post('/login')",
-      "match": "(\\.)\\s*(?:(get)|(post)|(put)|(patch)|(delete)|(head|options|all))\\s*(?=\\(\\s*[`'\"]\\s*/)",
-      "captures": {
-        "1": { "name": "punctuation.accessor.ts" },
-        "2": { "name": "entity.name.function.http-verb.get.ember" },
-        "3": { "name": "entity.name.function.http-verb.post.ember" },
-        "4": { "name": "entity.name.function.http-verb.put.ember" },
-        "5": { "name": "entity.name.function.http-verb.patch.ember" },
-        "6": { "name": "entity.name.function.http-verb.delete.ember" },
-        "7": { "name": "entity.name.function.http-verb.other.ember" }
-      }
-    },
-
     "react-hook": {
       "comment": "useState, useEffect, useRouter and any custom useXxx hook",
       "match": "\\b(use[A-Z][\\w$]*)\\s*(?=[<(])",
       "captures": {
-        "1": { "name": "entity.name.function.hook.react.ember" }
+        "1": {
+          "name": "entity.name.function.hook.react.ember"
+        }
       }
     },
-
     "nextjs-api": {
       "comment": "Next.js data-fetching and server APIs",
       "match": "\\b(getServerSideProps|getStaticProps|getStaticPaths|getInitialProps|generateMetadata|generateStaticParams|generateViewport|generateImageMetadata|revalidatePath|revalidateTag|unstable_cache|unstable_noStore|notFound|permanentRedirect|draftMode)\\b",
       "captures": {
-        "1": { "name": "support.function.nextjs.ember" }
+        "1": {
+          "name": "support.function.nextjs.ember"
+        }
       }
+    },
+    "route-chain": {
+      "comment": "Track known Express router.route(...) chains; balanced arguments keep nested callbacks isolated.",
+      "begin": "\\b((?:app|router|axios|api|server|http|https|request|agent|client|instance|supertest|superagent|[A-Za-z_$][\\w$]*(?:Router|App|Api|Client|Server|Agent|Instance|Http|Fetcher|Request)))\\s*(\\.)\\s*(route)(?=\\s*\\()",
+      "beginCaptures": {
+        "1": {
+          "name": "variable.other.object"
+        },
+        "2": {
+          "name": "punctuation.accessor"
+        },
+        "3": {
+          "name": "entity.name.function"
+        }
+      },
+      "end": "(?!\\s|$)(?!\\(|\\.\\s*(?:get|post|put|patch|delete|head|options|all)\\b)",
+      "patterns": [
+        {
+          "include": "#chain-arguments"
+        },
+        {
+          "match": "(\\.)\\s*(?:(get)|(post)|(put)|(patch)|(delete)|(head|options|all))\\b(?=\\s*\\()",
+          "captures": {
+            "1": {
+              "name": "punctuation.accessor"
+            },
+            "2": {
+              "name": "entity.name.function.http-verb.get.ember"
+            },
+            "3": {
+              "name": "entity.name.function.http-verb.post.ember"
+            },
+            "4": {
+              "name": "entity.name.function.http-verb.put.ember"
+            },
+            "5": {
+              "name": "entity.name.function.http-verb.patch.ember"
+            },
+            "6": {
+              "name": "entity.name.function.http-verb.delete.ember"
+            },
+            "7": {
+              "name": "entity.name.function.http-verb.other.ember"
+            }
+          }
+        }
+      ]
+    },
+    "chain-arguments": {
+      "begin": "\\(",
+      "end": "\\)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.parameters.begin"
+        }
+      },
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.parameters.end"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.ts"
+        }
+      ]
     }
   }
 }
