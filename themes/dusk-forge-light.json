@@ -2,7 +2,7 @@
   "$schema": "vscode://schemas/color-theme",
   "name": "Dusk Forge Light",
   "type": "light",
-  "semanticHighlighting": true,
+  "semanticHighlighting": false,
   "colors": {
     "focusBorder": "#A33F26",
     "foreground": "#273344",
