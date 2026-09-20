@@ -4,6 +4,16 @@ Two coordinated VS Code themes for developers: **Dusk Forge Dark** and **Dusk Fo
 
 Dark uses deep slate surfaces with warm amber, teal, blue and lavender syntax. Light uses soft off-white surfaces with darker ink colours, rather than simply inverting the dark palette.
 
+## MERN, MEAN and PostgreSQL
+
+- **React / Next.js:** component types, props, hooks, strings and control flow use consistent colour roles.
+- **Angular:** TypeScript decorators, classes, properties and HTML attributes have distinct colours. Angular-specific template syntax relies on the Angular language extension.
+- **Express / Node.js:** HTTP method scopes are preserved alongside regular JavaScript and TypeScript highlighting.
+- **MongoDB:** JSON document keys and JavaScript object properties use blue, separate from green string values and purple constants. This release does not parse MongoDB queries or assign special colours to individual aggregation operators.
+- **SQL / PostgreSQL:** explicit rules cover statement keywords, SQL types, constraints, functions and parameter scopes. PostgreSQL dollar-quoted strings are covered when the installed grammar exposes those scopes.
+
+A theme styles scopes supplied by VS Code and language extensions; it does not install a database client or language server. SQL inside JavaScript strings remains string-coloured unless another extension provides embedded SQL scopes.
+
 ## Install and select
 
 Search for **Dusk Forge** by **Yasowant Nayak**, or run:
@@ -51,7 +61,7 @@ React hook, Next.js API and `use client` / `use server` scopes are preserved fro
 | Functions | `#EBC27C` | `#805700` |
 | Strings | `#A8CC8C` | `#3C6527` |
 | Types | `#7DCDBB` | `#14685E` |
-| Properties / attributes | `#8FBDF2` | `#225EA2` |
+| Document keys / attributes | `#8FBDF2` | `#225EA2` |
 | Constants | `#C6A5EF` | `#7444A0` |
 
 ## Feedback

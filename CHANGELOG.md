@@ -1,3 +1,11 @@
+# 1.2.1
+
+- Added explicit SQL and PostgreSQL scope colours for statements, types, constraints, functions and parameters.
+- Made JSON document keys and JavaScript/TypeScript object properties consistently blue, including semantic tokens.
+- Refined TypeScript decorator and HTML attribute colours for Angular development.
+- Preserved existing React, Next.js and HTTP method scopes in both Dark and Light.
+- Updated MERN/MEAN documentation with language-extension requirements and limitations.
+
 # 1.2.0
 
 - Added Dusk Forge Light with a dedicated light palette.

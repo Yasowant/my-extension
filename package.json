@@ -1,8 +1,8 @@
 {
   "name": "ember-dusk-yasowant",
   "displayName": "Dusk Forge",
-  "description": "Two carefully balanced dark and light themes for developers, with readable syntax, distinct HTTP method colours, clear diagnostics and Git diffs. For React, Next.js, TypeScript and Node.js.",
-  "version": "1.2.0",
+  "description": "Dusk Forge dark and light themes for MERN and MEAN developers: React, Angular, Node.js, Express, MongoDB and PostgreSQL. Clear syntax, readable document keys and distinct HTTP method colours.",
+  "version": "1.2.1",
   "publisher": "yasowant",
   "license": "MIT",
   "icon": "images/icon.png",
@@ -15,17 +15,22 @@
   "keywords": [
     "theme",
     "dark theme",
-    "nextjs",
+    "light theme",
+    "MERN",
+    "MEAN",
     "react",
+    "angular",
     "typescript",
     "nodejs",
     "express",
-    "rest api",
-    "warm",
+    "mongodb",
+    "postgresql",
+    "sql",
+    "nextjs",
     "http"
   ],
   "galleryBanner": {
-    "color": "#1C1917",
+    "color": "#141C28",
     "theme": "dark"
   },
   "repository": {
