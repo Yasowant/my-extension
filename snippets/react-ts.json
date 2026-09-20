@@ -1,0 +1,15 @@
+{
+  "Typed React component": {
+    "prefix": "dfreactts",
+    "description": "React component with explicit props type",
+    "body": [
+      "type ${1:UserCard}Props = {",
+      "  title: string;",
+      "};",
+      "",
+      "export default function ${1:UserCard}({ title }: ${1:UserCard}Props) {",
+      "  return <section><h2>{title}</h2>$0</section>;",
+      "}"
+    ]
+  }
+}

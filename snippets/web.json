@@ -1,0 +1,42 @@
+{
+  "Express async route": {
+    "prefix": "dfroute",
+    "description": "Express route with explicit async error forwarding (Express 4/5)",
+    "body": [
+      "${1:router}.${2|get,post,put,patch,delete|}('${3:/users}', async (req, res, next) => {",
+      "  try {",
+      "    ${0:// Validate input and call your service here.}",
+      "    res.status(200).json({ ok: true });",
+      "  } catch (error) {",
+      "    next(error);",
+      "  }",
+      "});"
+    ]
+  },
+  "Fetch with response check": {
+    "prefix": "dffetch",
+    "description": "Async JSON fetch helper that checks the HTTP response",
+    "body": [
+      "async function ${1:loadUsers}() {",
+      "  const response = await fetch('${2:/api/users}');",
+      "  if (!response.ok) {",
+      "    throw new Error('Request failed: ' + response.status);",
+      "  }",
+      "  return response.json();",
+      "}",
+      "$0"
+    ]
+  },
+  "Parameterized PostgreSQL query": {
+    "prefix": "dfquery",
+    "description": "node-postgres parameterized query; requires an existing pool/client and async context",
+    "body": [
+      "// Requires an existing node-postgres pool and an async function.",
+      "const { rows } = await ${1:pool}.query(",
+      "  'SELECT id, email FROM users WHERE id = \\$1',",
+      "  [${2:userId}]",
+      ");",
+      "$0"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "Bounded SELECT": {
+    "prefix": "dfselect",
+    "description": "SELECT template with WHERE, ordering and limit",
+    "body": [
+      "SELECT ${1:id, email}",
+      "FROM ${2:users}",
+      "WHERE ${3:active = TRUE}",
+      "ORDER BY ${4:id}",
+      "LIMIT ${5:50};",
+      "$0"
+    ]
+  },
+  "Transaction skeleton": {
+    "prefix": "dftransaction",
+    "description": "Manual transaction skeleton; inspect statements before executing",
+    "body": [
+      "BEGIN;",
+      "${0:-- Add and review your statements here.}",
+      "-- Use COMMIT only after checking the results.",
+      "ROLLBACK;"
+    ]
+  }
+}
