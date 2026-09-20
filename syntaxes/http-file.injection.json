@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "ember-dusk.http-file.injection",
+  "injectionSelector": "L:source.http, L:source.rest",
+  "patterns": [
+    { "include": "#request-line" }
+  ],
+  "repository": {
+    "request-line": {
+      "comment": "REST Client / .http files tag every verb as keyword.control.http — this splits them per verb",
+      "match": "(?i)^\\s*(?:(get)|(post)|(put)|(patch)|(delete)|(head|options|trace|connect))\\s+(?=\\S)",
+      "captures": {
+        "1": { "name": "keyword.control.http.verb.get.ember" },
+        "2": { "name": "keyword.control.http.verb.post.ember" },
+        "3": { "name": "keyword.control.http.verb.put.ember" },
+        "4": { "name": "keyword.control.http.verb.patch.ember" },
+        "5": { "name": "keyword.control.http.verb.delete.ember" },
+        "6": { "name": "keyword.control.http.verb.other.ember" }
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "name": "ember-dusk",
+  "displayName": "Ember Dusk",
+  "description": "A clean, warm dark theme that colours HTTP verbs by method — GET, POST, PUT, PATCH and DELETE each get their own colour in Express routes, fetch/axios calls, Next.js route handlers and .http files. Tuned for Next.js, React, TypeScript and Node.",
+  "version": "1.1.0",
+  "publisher": "yasowant",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark theme",
+    "nextjs",
+    "react",
+    "typescript",
+    "nodejs",
+    "express",
+    "rest api",
+    "warm",
+    "http"
+  ],
+  "galleryBanner": {
+    "color": "#1C1917",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_GITHUB_USERNAME/ember-dusk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR_GITHUB_USERNAME/ember-dusk/issues"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Ember Dusk",
+        "uiTheme": "vs-dark",
+        "path": "./themes/ember-dusk-color-theme.json"
+      }
+    ],
+    "grammars": [
+      {
+        "path": "./syntaxes/http-verbs.injection.json",
+        "scopeName": "ember-dusk.http-verbs.injection",
+        "injectTo": [
+          "source.js",
+          "source.jsx",
+          "source.js.jsx",
+          "source.ts",
+          "source.tsx"
+        ]
+      },
+      {
+        "path": "./syntaxes/directives.injection.json",
+        "scopeName": "ember-dusk.directives.injection",
+        "injectTo": [
+          "source.js",
+          "source.jsx",
+          "source.js.jsx",
+          "source.ts",
+          "source.tsx"
+        ]
+      },
+      {
+        "path": "./syntaxes/http-file.injection.json",
+        "scopeName": "ember-dusk.http-file.injection",
+        "injectTo": [
+          "source.http"
+        ]
+      }
+    ]
+  }
+}

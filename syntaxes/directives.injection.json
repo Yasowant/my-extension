@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "ember-dusk.directives.injection",
+  "injectionSelector": "L:source.js -comment, L:source.jsx -comment, L:source.js.jsx -comment, L:source.ts -comment, L:source.tsx -comment",
+  "patterns": [
+    { "include": "#directive" }
+  ],
+  "repository": {
+    "directive": {
+      "comment": "'use client' / 'use server' / 'use cache' — only at the very top of a file",
+      "match": "\\A\\s*(['\"])(use client|use server|use cache|use strict)\\1",
+      "captures": {
+        "1": { "name": "punctuation.definition.string.ts" },
+        "2": { "name": "keyword.control.directive.ember" }
+      }
+    }
+  }
+}
