@@ -1,8 +1,8 @@
 {
-  "name": "ember-dusk",
-  "displayName": "Ember Dusk",
-  "description": "A clean, warm dark theme that colours HTTP verbs by method — GET, POST, PUT, PATCH and DELETE each get their own colour in Express routes, fetch/axios calls, Next.js route handlers and .http files. Tuned for Next.js, React, TypeScript and Node.",
-  "version": "1.1.0",
+  "name": "ember-dusk-yasowant",
+  "displayName": "Dusk Forge",
+  "description": "Two carefully balanced dark and light themes for developers, with readable syntax, distinct HTTP method colours, clear diagnostics and Git diffs. For React, Next.js, TypeScript and Node.js.",
+  "version": "1.2.0",
   "publisher": "yasowant",
   "license": "MIT",
   "icon": "images/icon.png",
@@ -38,9 +38,16 @@
   "contributes": {
     "themes": [
       {
-        "label": "Ember Dusk",
+        "id": "Dusk Forge",
+        "label": "Dusk Forge Dark",
         "uiTheme": "vs-dark",
-        "path": "./themes/ember-dusk-color-theme.json"
+        "path": "./themes/dusk-forge-dark.json"
+      },
+      {
+        "id": "Dusk Forge Light",
+        "label": "Dusk Forge Light",
+        "uiTheme": "vs",
+        "path": "./themes/dusk-forge-light.json"
       }
     ],
     "grammars": [

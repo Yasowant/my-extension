@@ -1,3 +1,15 @@
+# 1.2.0
+
+- Added Dusk Forge Light with a dedicated light palette.
+- Refined Dusk Forge Dark with slate surfaces and clearer syntax colours.
+- Added search borders, inlay hint styling and improved focus cues.
+- Preserved HTTP grammar injections and the existing dark theme ID.
+- Checked syntax and semantic text contrast against both editor backgrounds.
+
+# 1.1.1
+
+- Renamed the extension and colour theme to Dusk Forge.
+
 # Changelog
 
 ## [1.1.0]
