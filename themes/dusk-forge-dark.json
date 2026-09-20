@@ -108,13 +108,13 @@
     "editorLineNumber.activeForeground": "#8FBDF2",
     "editorCursor.foreground": "#F0A078",
     "editorCursor.background": "#141C28",
-    "editor.selectionBackground": "#47658C66",
-    "editor.selectionHighlightBackground": "#8FBDF21A",
-    "editor.inactiveSelectionBackground": "#263449",
-    "editor.wordHighlightBackground": "#EBC27C26",
-    "editor.wordHighlightStrongBackground": "#A8CC8C26",
-    "editor.findMatchBackground": "#EBC27C33",
-    "editor.findMatchHighlightBackground": "#EBC27C1A",
+    "editor.selectionBackground": "#47658C25",
+    "editor.selectionHighlightBackground": "#8FBDF20C",
+    "editor.inactiveSelectionBackground": "#47658C18",
+    "editor.wordHighlightBackground": "#EBC27C0C",
+    "editor.wordHighlightStrongBackground": "#7DCDBB0C",
+    "editor.findMatchBackground": "#EBC27C0C",
+    "editor.findMatchHighlightBackground": "#EBC27C08",
     "editor.findRangeHighlightBackground": "#263449",
     "editor.hoverHighlightBackground": "#263449",
     "editor.lineHighlightBackground": "#1B2636",
@@ -152,7 +152,7 @@
     "editorGutter.modifiedBackground": "#E8BC70",
     "editorGutter.addedBackground": "#A8CC8C",
     "editorGutter.deletedBackground": "#F08080",
-    "editorGutter.foldingControlForeground": "#A5B1C2",
+    "editorGutter.foldingControlForeground": "#8FBDF2",
     "editorWidget.background": "#1C2635",
     "editorWidget.foreground": "#DCE4EE",
     "editorWidget.border": "#344256",
@@ -185,17 +185,17 @@
     "peekViewTitle.background": "#141C28",
     "peekViewTitleDescription.foreground": "#A5B1C2",
     "peekViewTitleLabel.foreground": "#DCE4EE",
-    "diffEditor.insertedTextBackground": "#A8CC8C1F",
-    "diffEditor.removedTextBackground": "#F080801F",
-    "diffEditor.insertedLineBackground": "#A8CC8C14",
-    "diffEditor.removedLineBackground": "#F0808014",
+    "diffEditor.insertedTextBackground": "#7DCDBB0C",
+    "diffEditor.removedTextBackground": "#F080800C",
+    "diffEditor.insertedLineBackground": "#7DCDBB08",
+    "diffEditor.removedLineBackground": "#F0808008",
     "diffEditor.border": "#293548",
     "diffEditorGutter.insertedLineBackground": "#A8CC8C1F",
     "diffEditorGutter.removedLineBackground": "#F080801F",
-    "merge.currentHeaderBackground": "#7DCDBB4D",
-    "merge.currentContentBackground": "#7DCDBB24",
-    "merge.incomingHeaderBackground": "#C6A5EF4D",
-    "merge.incomingContentBackground": "#C6A5EF24",
+    "merge.currentHeaderBackground": "#7DCDBB18",
+    "merge.currentContentBackground": "#7DCDBB08",
+    "merge.incomingHeaderBackground": "#C6A5EF18",
+    "merge.incomingContentBackground": "#C6A5EF08",
     "merge.border": "#293548",
     "panel.background": "#141C28",
     "panel.border": "#293548",
@@ -288,8 +288,8 @@
     "debugToolBar.border": "#344256",
     "debugIcon.breakpointForeground": "#F08080",
     "debugIcon.breakpointDisabledForeground": "#8D9BAD",
-    "editor.stackFrameHighlightBackground": "#EBC27C26",
-    "editor.focusedStackFrameHighlightBackground": "#A8CC8C26",
+    "editor.stackFrameHighlightBackground": "#EBC27C10",
+    "editor.focusedStackFrameHighlightBackground": "#7DCDBB10",
     "debugConsoleInputIcon.foreground": "#F0A078",
     "debugConsole.infoForeground": "#7DCDBB",
     "debugConsole.warningForeground": "#E8BC70",
@@ -356,7 +356,22 @@
     "editor.inlayHint.foreground": "#94A3B8",
     "editor.inlayHint.background": "#263449",
     "editorBracketPairGuide.background1": "#344256",
-    "editorBracketPairGuide.activeBackground1": "#8FBDF2"
+    "editorBracketPairGuide.activeBackground1": "#8FBDF2",
+    "editor.selectionHighlightBorder": "#8FBDF280",
+    "editorError.border": "#F0808080",
+    "editorWarning.border": "#EBC27C80",
+    "editorInfo.border": "#8FBDF280",
+    "debugIcon.breakpointCurrentStackframeForeground": "#EBC27C",
+    "debugIcon.breakpointStackframeForeground": "#7DCDBB",
+    "debugExceptionWidget.background": "#241D27",
+    "debugExceptionWidget.border": "#F08080",
+    "merge.commonHeaderBackground": "#8FBDF218",
+    "merge.commonContentBackground": "#8FBDF208",
+    "mergeEditor.change.border": "#EBC27C",
+    "mergeEditor.conflict.unhandledFocused.border": "#F08080",
+    "mergeEditor.conflict.handledFocused.border": "#7DCDBB",
+    "diffEditor.insertedTextBorder": "#7DCDBB80",
+    "diffEditor.removedTextBorder": "#F0808080"
   },
   "tokenColors": [
     {
@@ -632,8 +647,6 @@
       "name": "JSX component names (capitalised tags)",
       "scope": [
         "support.class.component",
-        "entity.name.tag.jsx",
-        "entity.name.tag.tsx",
         "support.class.component.jsx",
         "support.class.component.tsx"
       ],
@@ -1089,6 +1102,38 @@
       "name": "HTML attributes and Angular template attribute fallback",
       "scope": [
         "entity.other.attribute-name.html"
+      ],
+      "settings": {
+        "foreground": "#8FBDF2"
+      }
+    },
+    {
+      "name": "React component and Angular decorator distinctions",
+      "scope": [
+        "entity.name.tag support.class.component",
+        "entity.name.type.ts",
+        "entity.name.type.tsx"
+      ],
+      "settings": {
+        "foreground": "#7DCDBB"
+      }
+    },
+    {
+      "name": "Angular decorator names",
+      "scope": [
+        "meta.decorator entity.name.function",
+        "meta.decorator variable.other.readwrite",
+        "entity.name.function.decorator"
+      ],
+      "settings": {
+        "foreground": "#C6A5EF"
+      }
+    },
+    {
+      "name": "JSX expression props and HTML binding attributes",
+      "scope": [
+        "entity.other.attribute-name",
+        "meta.tag.attributes entity.other.attribute-name"
       ],
       "settings": {
         "foreground": "#8FBDF2"
