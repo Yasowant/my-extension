@@ -1,3 +1,12 @@
+# 1.3.0
+
+- Removed slash-only HTTP detection to avoid colouring Map and ordinary object methods as requests.
+- Added balanced Express route-chain highlighting and regression cases for scope termination.
+- Refined React component/prop and Angular decorator distinction.
+- Added debug, exception, diff and merge borders; reduced overlay opacity and darkened light-theme comments.
+- Added automated grammar and composited-contrast tests, a sample workspace, troubleshooting and honest rendered previews.
+- Semantic highlighting remains opt-in; IntelliSense and diagnostics are unaffected.
+
 # 1.2.2
 
 - Fixed generic semantic method colours overriding GET, POST, PUT, PATCH and DELETE colours by making semantic overlays opt-in in both themes.

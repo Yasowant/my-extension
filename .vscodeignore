@@ -1,8 +1,11 @@
 .vscode/**
-.git/**
-.gitignore
-.vscodeignore
-PUBLISHING.md
-*.vsix
-package-lock.json
+.github/**
 node_modules/**
+preview/**
+*.vsix
+.gitignore
+.DS_Store
+
+tests/**
+examples/**
+package-lock.json

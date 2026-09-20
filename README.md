@@ -56,7 +56,7 @@ React hook, Next.js API and `use client` / `use server` scopes are preserved fro
 | --- | --- | --- |
 | Editor | `#141C28` | `#F7F8FA` |
 | Text | `#DCE4EE` | `#273344` |
-| Comments | `#94A3B8` | `#626F80` |
+| Comments | `#94A3B8` | `#566273` |
 | Keywords | `#F0A078` | `#A33F26` |
 | Functions | `#EBC27C` | `#805700` |
 | Strings | `#A8CC8C` | `#3C6527` |
@@ -86,3 +86,28 @@ If your user or workspace settings explicitly force semantic highlighting on, us
 ```
 
 Merge these entries into any existing setting rather than replacing your other customizations. Semantic highlighting is optional: turning it on can override the method-specific grammar colours. This does not disable IntelliSense, type checking or diagnostics.
+
+## Version 1.3.0 developer improvements
+
+- Safer HTTP matching: ordinary `cache.get('/users')`, `Map.get()` and `.delete()` are no longer treated as HTTP based only on a slash-prefixed argument.
+- Known HTTP receivers (such as `router`, `app`, `axios`, `apiClient`) and `router.route('/users').get(...).post(...)` chains have method-specific colours. Multiline call arguments are covered. Arbitrary aliases are intentionally not guessed; HTTP matching is a grammar heuristic, not type analysis.
+- React component tokens stay teal, props blue and hooks distinct. Angular decorator names use purple, separate from blue attributes; Angular template intelligence still requires Angular Language Service.
+- Debug stack-frame, exception, merge-conflict and diff borders now have explicit colours.
+- Restrained highlight overlays preserve syntax contrast in selected, searched and changed code. Light comments are darker for readability.
+
+### Previews
+
+These are rendered examples from the actual theme and VS Code grammars, not live editor screenshots. Your font, settings and installed language extensions may change the appearance.
+
+![Dusk Forge Dark](images/dark-preview.png)
+![Dusk Forge Light](images/light-preview.png)
+
+### Try the sample workspace
+
+Open [examples](https://github.com/Yasowant/my-extension/tree/main/examples) in VS Code to compare Express routes, React, Angular, MongoDB-style JSON and PostgreSQL. The examples are highlighting fixtures, not a bundled runnable application. No database or secrets are required.
+
+### Test and report issues
+
+Run `npm ci` and `npm test`; see [test instructions](tests/README.md) for grammar locations. The automated suite covers real VS Code grammars and contrast over editor overlays. It does not certify every UI combination or replace real-project testing.
+
+For a useful report include your VS Code/extension version, language mode, active theme, minimal code sample and output from **Developer: Inspect Editor Tokens and Scopes**. Check user/workspace token overrides before reporting. Never include credentials.
