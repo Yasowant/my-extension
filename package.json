@@ -30,10 +30,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_GITHUB_USERNAME/ember-dusk.git"
+    "url": "https://github.com/Yasowant/my-extension.git"
   },
   "bugs": {
-    "url": "https://github.com/YOUR_GITHUB_USERNAME/ember-dusk/issues"
+    "url": "https://github.com/Yasowant/my-extension/issues"
   },
   "contributes": {
     "themes": [
