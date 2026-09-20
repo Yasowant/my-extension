@@ -1,0 +1,6 @@
+<section class="user-card" [class.active]="active">
+  <h2>{{ name }}</h2>
+  <button type="button" (click)="select()" [disabled]="!active">
+    Select user
+  </button>
+</section>

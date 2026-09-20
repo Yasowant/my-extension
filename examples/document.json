@@ -1,0 +1,7 @@
+{
+  "collection": "users",
+  "filter": { "active": true, "age": { "$gte": 18 } },
+  "projection": { "name": 1, "email": 1 },
+  "limit": 20,
+  "cursor": null
+}
