@@ -1,3 +1,11 @@
+# 1.4.1
+
+- Added dedicated rose/berry colours for visible JSX text while preserving tag, prop, attribute-string and expression colours.
+- Added React JSX regression cases for literal text, nested tags and embedded expressions.
+- Prevented stale diagnostic navigation after file edits or resolved problems.
+- Improved semantic override reporting and made web snippets available in JSX/TSX.
+- Updated relevant Marketplace keywords, description, installation link and React preview.
+
 # 1.4.0
 
 - Added on-demand highlighting troubleshooting and developer setup commands.

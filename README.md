@@ -1,4 +1,21 @@
-# Dusk Forge
+# Dusk Forge — React, JSX & TypeScript themes
+
+Dark and light VS Code themes with distinct JSX text, HTTP method colours and practical coding snippets.
+
+[Install Dusk Forge](https://marketplace.visualstudio.com/items?itemName=yasowant.ember-dusk-yasowant) · [Report a problem](https://github.com/Yasowant/my-extension/issues)
+
+## New in 1.4.1
+
+In `<p>dasdasdasd</p>`, the visible text now uses **soft rose in Dark** and **deep berry in Light**. Tags, props and JavaScript expressions retain their own colour roles. Nested and multiline JSX is covered in React JavaScript and TypeScript grammars.
+
+- Web snippets now appear in JSX and TSX as well as JS and TS.
+- Current File Problems detects files changed while the picker was open, avoiding stale locations.
+- Check Highlighting displays semantic customization switches instead of treating the editor setting as the final answer.
+
+![React JSX text in both Dusk Forge themes](images/react-jsx-preview.png)
+
+*Rendered from the actual theme and VS Code grammars; not a live editor screenshot.*
+
 
 Two coordinated VS Code themes for developers: **Dusk Forge Dark** and **Dusk Forge Light**.
 
@@ -126,9 +143,9 @@ Snippets: type `df` and trigger suggestions, or use **Snippets: Insert Snippet**
 
 | Prefix | File type | Starting point |
 | --- | --- | --- |
-| dfroute | JS / TS | Express async route with error forwarding |
-| dffetch | JS / TS | JSON fetch helper with HTTP status check |
-| dfquery | JS / TS | Parameterized node-postgres query |
+| dfroute | JS / TS / JSX / TSX | Express async route with error forwarding |
+| dffetch | JS / TS / JSX / TSX | JSON fetch helper with HTTP status check |
+| dfquery | JS / TS / JSX / TSX | Parameterized node-postgres query |
 | dfreact | JSX | React component |
 | dfreactts | TSX | Typed React component |
 | dfselect | SQL | SELECT with filter, ordering and limit |

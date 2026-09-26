@@ -1,8 +1,8 @@
 {
   "name": "ember-dusk-yasowant",
   "displayName": "Dusk Forge",
-  "description": "Dusk Forge dark and light themes for MERN and MEAN developers: React, Angular, Node.js, Express, MongoDB and PostgreSQL. Clear syntax, readable document keys and distinct HTTP method colours.",
-  "version": "1.4.0",
+  "description": "Dusk Forge dark and light themes for React, JSX and TypeScript, with distinct JSX text and HTTP method colours, coding snippets and developer troubleshooting.",
+  "version": "1.4.1",
   "publisher": "yasowant",
   "license": "MIT",
   "icon": "images/icon.png",
@@ -29,7 +29,11 @@
     "postgresql",
     "sql",
     "nextjs",
-    "http"
+    "http",
+    "jsx",
+    "tsx",
+    "syntax highlighting",
+    "snippets"
   ],
   "galleryBanner": {
     "color": "#141C28",
@@ -135,6 +139,14 @@
       {
         "language": "sql",
         "path": "./snippets/sql.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/web.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/web.json"
       }
     ]
   },
@@ -153,5 +165,6 @@
     "onCommand:duskForge.fileProblems",
     "onCommand:duskForge.openProblems",
     "onCommand:duskForge.quickFix"
-  ]
+  ],
+  "homepage": "https://github.com/Yasowant/my-extension#readme"
 }
