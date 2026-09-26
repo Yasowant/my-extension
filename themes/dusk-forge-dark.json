@@ -1138,6 +1138,28 @@
       "settings": {
         "foreground": "#8FBDF2"
       }
+    },
+    {
+      "name": "JSX visible text",
+      "scope": [
+        "meta.jsx.children.js",
+        "meta.jsx.children.jsx",
+        "meta.jsx.children.tsx"
+      ],
+      "settings": {
+        "foreground": "#F2B8CF"
+      }
+    },
+    {
+      "name": "JSX embedded expression base",
+      "scope": [
+        "meta.embedded.expression.js",
+        "meta.embedded.expression.jsx",
+        "meta.embedded.expression.tsx"
+      ],
+      "settings": {
+        "foreground": "#DCE4EE"
+      }
     }
   ],
   "semanticTokenColors": {
