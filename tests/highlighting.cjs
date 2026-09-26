@@ -48,7 +48,22 @@ for(const [scope,file] of [['source.tsx','UserCard.tsx'],['source.ts','user.comp
  const gram=await registry.loadGrammar(scope);assert(gram,scope);let state=tm.INITIAL;
  for(const line of fs.readFileSync(root+'/examples/'+file,'utf8').split('\n')){const result=gram.tokenizeLine(line,state);state=result.ruleStack;assert(!result.stoppedEarly);checks++;}
 }
+for(const scope of ['source.js','source.js.jsx','source.tsx']){
+ const gram=await registry.loadGrammar(scope);let state=tm.INITIAL;
+ for(const line of ['const view = <p>', '  Multiline text', '  {name}', '</p>;']){
+  const result=gram.tokenizeLine2(line,state);state=result.ruleStack;
+  if(line.includes('Multiline')){const metadata=result.tokens[1];assert.equal(registry.getColorMap()[(metadata>>>15)&511].toUpperCase(),theme.tokenColors.find(x=>x.name==='JSX visible text').settings.foreground.toUpperCase());checks++;}
+ }
+}
+const jsxText=theme.tokenColors.find(x=>x.name==='JSX visible text').settings.foreground;
 const cases=[
+ ...['source.js','source.js.jsx','source.tsx'].flatMap(scope=>[
+  [scope,'const view = <p>dasdasdasd</p>;','dasdasdasd',jsxText],
+  [scope,'const view = <><p>Hello <strong>world</strong></p></>;','world',jsxText],
+  [scope,'const view = <p title="Hello">Text {name}</p>;','name',theme.colors['editor.foreground']],
+  [scope,'const view = <p title="Hello">Text {name}</p>;','Hello',theme.tokenColors.find(x=>x.name==='Strings').settings.foreground],
+  [scope,'const view = <p>Text</p>;','p>',theme.tokenColors.find(x=>x.name==='JSX / HTML tags').settings.foreground]
+ ]),
  ['source.tsx','const view = <UserCard active={true} />;','UserCard',theme.tokenColors.find(x=>x.name.startsWith('Classes, types')).settings.foreground],
  ['source.tsx','const view = <div className="card" />;','className',theme.tokenColors.find(x=>x.name==='Tag attributes / props').settings.foreground],
  ['source.json','{"name": "Ada"}','"Ada"',theme.tokenColors.find(x=>x.name.toLowerCase().includes('strings')).settings.foreground],
