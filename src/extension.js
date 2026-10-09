@@ -27,6 +27,9 @@ async function troubleshoot() {
     `TextMate customizations present: ${Object.keys(tokens).length ? 'yes' : 'no'}`,
     `Semantic customizations present: ${Object.keys(semanticTokens).length ? 'yes — review global and theme-specific enabled/rules entries' : 'no'}`, '',
     '## Suggested checks',
+    ...(scope?.languageId === 'javascript' || scope?.languageId === 'typescript' ? ['If this file contains JSX tags, select JavaScript React or TypeScript React as its language mode.'] : []),
+    ...(semantic === true || semanticTokens.enabled === true ? ['Semantic highlighting is explicitly enabled in at least one setting. It may override HTTP method grammar colours; inspect matching theme overrides below before changing settings.'] : []),
+    ...(Object.keys(tokens).length ? ['Custom token colours are configured. Search Settings for editor.tokenColorCustomizations and review matching theme entries.'] : []),
     '1. Confirm the correct language mode in the status bar.',
     '2. Run Developer: Inspect Editor Tokens and Scopes on the unexpected colour.',
     '3. Review user, workspace and language-specific highlighting settings.',
@@ -39,16 +42,35 @@ async function troubleshoot() {
     'This report only reads settings; it does not change them or upload project data.'
   ].join('\n'));
 }
+async function preview() {
+  const samples = [
+    { label: 'React / JSX', language: 'javascriptreact', content: "// Dusk Forge preview — sample only, not executed.\nexport default function Welcome({ name = 'Developer' }) {\n  return <section className=\"welcome\"><h1>Hello, {name}!</h1><p>Build something useful.</p></section>;\n}\n" },
+    { label: 'Angular / TypeScript', language: 'typescript', content: "// Angular decorators and types; template colours need Angular Language Service.\nimport { Component } from '@angular/core';\n@Component({ selector: 'app-welcome', template: '<h1>Hello developer</h1>' })\nexport class WelcomeComponent {\n  readonly title: string = 'Dusk Forge';\n}\n" },
+    { label: 'Express / Node.js', language: 'javascript', content: "// Sample only: requires an Express router and application services.\nrouter.get('/users', async (req, res, next) => {\n  try { res.json(await listUsers()); } catch (error) { next(error); }\n});\nrouter.post('/users', createUser);\nrouter.put('/users/:id', replaceUser);\nrouter.patch('/users/:id', updateUser);\nrouter.delete('/users/:id', deleteUser);\n" },
+    { label: 'PostgreSQL / SQL', language: 'sql', content: "-- Preview only: no database connection or query execution.\nSELECT id, email, created_at\nFROM users\nWHERE active = TRUE AND id = $1\nORDER BY created_at DESC\nLIMIT 50;\n" },
+    { label: 'MongoDB / JSON', language: 'json', content: '{\n  "name": "Dusk Forge",\n  "active": true,\n  "languages": ["React", "Angular", "SQL"],\n  "version": 150\n}\n' }
+  ];
+  const sample = await vscode.window.showQuickPick(samples, { title: 'Dusk Forge: Preview Code', placeHolder: 'Choose a language to preview with your current theme' });
+  if (!sample) return;
+  const document = await vscode.workspace.openTextDocument({ language: sample.language, content: sample.content });
+  await vscode.window.showTextDocument(document, { preview: true });
+  const action = await vscode.window.showInformationMessage('Preview uses your current theme. Choose Dusk Forge Dark or Dusk Forge Light in the theme picker.', 'Choose Theme');
+  if (action === 'Choose Theme') await vscode.commands.executeCommand('workbench.action.selectTheme');
+}
 async function setup() {
   const choices = [
+    { label: 'Preview code colours', detail: 'Open React, Angular, Express, SQL or JSON sample code.', command: 'duskForge.preview' },
+    { label: 'Choose Dark or Light', detail: 'Open the theme picker and select Dusk Forge Dark or Light.', command: 'workbench.action.selectTheme' },
+    { label: 'Check highlighting', detail: 'Read your current highlighting settings and suggested checks.', command: 'duskForge.troubleshoot' },
     { label: 'JavaScript / TypeScript', detail: 'Use VS Code built-in IntelliSense and project tsconfig/jsconfig settings.', guide: 'VS Code includes JavaScript and TypeScript language support. Open your project root and use its tsconfig.json or jsconfig.json. Run your project’s existing type-check script. Dusk Forge does not install dependencies or execute project scripts.' },
     { label: 'ESLint', detail: 'View the Microsoft ESLint extension; project configuration is required.', extension: 'dbaeumer.vscode-eslint' },
     { label: 'Angular', detail: 'View Angular Language Service for template support.', extension: 'Angular.ng-template' },
     { label: 'PostgreSQL / SQL', detail: 'Understand highlighting, query parameters and database tools.', guide: 'Dusk Forge styles SQL tokens but does not connect to a database. Install a SQL language extension suited to your project if you need richer PostgreSQL syntax. Keep credentials out of source files and use parameterized queries in your application.' },
-    { label: 'Snippets', detail: 'Discover the df-prefixed developer snippets.', guide: 'Type df in a supported file, then trigger suggestions or run Snippets: Insert Snippet. Available prefixes: dfroute, dffetch, dfquery (JS/TS/JSX/TSX), dfreact (JSX), dfreactts (TSX), dfselect and dftransaction (SQL). Snippets are editable starting points; review them before use.' }
+    { label: 'Snippets', detail: 'Discover the df-prefixed developer snippets.', guide: 'Type df in a supported file, then trigger suggestions or run Snippets: Insert Snippet. Available prefixes: dfroute, dferror, dffetch, dfquery (JS/TS/JSX/TSX), dfreact (JSX), dfreactts (TSX), dfselect and dftransaction (SQL). Snippets are editable starting points; review them before use.' }
   ];
   const choice = await vscode.window.showQuickPick(choices, { title: 'Dusk Forge: Developer Setup', matchOnDetail: true });
   if (!choice) return;
+  if (choice.command) return vscode.commands.executeCommand(choice.command);
   if (choice.extension) return vscode.commands.executeCommand('extension.open', choice.extension);
   return showGuide('# '+choice.label+'\n\n'+choice.guide);
 }
@@ -77,6 +99,8 @@ async function problems() {
 }
 function activate(context) {
   const handlers = {
+    'duskForge.preview': preview,
+    'duskForge.chooseTheme': () => vscode.commands.executeCommand('workbench.action.selectTheme'),
     'duskForge.troubleshoot': troubleshoot,
     'duskForge.developerSetup': setup,
     'duskForge.fileProblems': problems,
