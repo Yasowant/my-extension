@@ -14,5 +14,5 @@ exports.run=async()=>{
  }
  const doc=await vscode.workspace.openTextDocument({language:'javascriptreact',content:'const view = <p>dasdasdasd</p>;'});await vscode.window.showTextDocument(doc);
  await vscode.commands.executeCommand('duskForge.troubleshoot');assert(vscode.window.activeTextEditor.document.getText().includes('javascriptreact'));
- fs.writeFileSync(path.join(ext.extensionPath,'../../integration-141-result.json'),JSON.stringify({passed:true,checks:'Extension activation, all command registration, all contributed snippet expansions, literal SQL parameter, live troubleshooting command'}));
+ fs.writeFileSync(path.join(ext.extensionPath,'../../integration-150-result.json'),JSON.stringify({passed:true,checks:'Extension activation, all command registration, all contributed snippet expansions, literal SQL parameter, live troubleshooting command'}));
 };
