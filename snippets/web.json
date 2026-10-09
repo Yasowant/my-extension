@@ -38,5 +38,18 @@
       ");",
       "$0"
     ]
+  },
+  "Express error middleware": {
+    "prefix": "dferror",
+    "description": "Express error middleware; register after routes; avoids exposing internal error details",
+    "body": [
+      "// Register after your routes. Keep all four parameters for Express.",
+      "${1:app}.use((error, req, res, next) => {",
+      "  if (res.headersSent) return next(error);",
+      "  // Add your application logging here; avoid logging secrets.",
+      "  res.status(500).json({ error: 'Internal server error' });",
+      "});",
+      "$0"
+    ]
   }
 }
