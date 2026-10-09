@@ -1,3 +1,11 @@
+## New in 1.5.0
+
+- Run **Dusk Forge: Preview Code** to open an editable, unsaved React, Angular, Express, PostgreSQL or JSON sample in your editor. Samples are never executed and require no database connection.
+- Choose **Choose Theme** after opening a sample, or run **Dusk Forge: Choose Color Theme**, then select **Dusk Forge Dark** or **Dusk Forge Light**. The normal VS Code picker previews colours and lets you cancel.
+- **Developer Setup** now links to previews, theme selection and highlighting checks.
+- **Check Highlighting** includes guidance for JSX language modes, semantic overrides and custom token colours. It reads settings without changing them.
+- Type **dferror** in JS, TS, JSX or TSX for an Express error middleware starting point. Register it after routes and review it before use.
+
 # Dusk Forge — React, JSX & TypeScript themes
 
 Dark and light VS Code themes with distinct JSX text, HTTP method colours and practical coding snippets.

@@ -1,3 +1,10 @@
+## 1.5.0 — 2026-10-09
+
+- Added native code previews for React, Angular, Express, SQL and JSON.
+- Added theme-picker command and guided setup shortcuts.
+- Added contextual highlighting troubleshooting guidance.
+- Added dferror Express error middleware snippet with headers-sent handling.
+
 # 1.4.1
 
 - Added dedicated rose/berry colours for visible JSX text while preserving tag, prop, attribute-string and expression colours.

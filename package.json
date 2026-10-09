@@ -2,7 +2,7 @@
   "name": "ember-dusk-yasowant",
   "displayName": "Dusk Forge",
   "description": "Dusk Forge dark and light themes for React, JSX and TypeScript, with distinct JSX text and HTTP method colours, coding snippets and developer troubleshooting.",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "publisher": "yasowant",
   "license": "MIT",
   "icon": "images/icon.png",
@@ -117,6 +117,16 @@
         "command": "duskForge.quickFix",
         "title": "Show Quick Fixes",
         "category": "Dusk Forge"
+      },
+      {
+        "command": "duskForge.preview",
+        "title": "Preview Code",
+        "category": "Dusk Forge"
+      },
+      {
+        "command": "duskForge.chooseTheme",
+        "title": "Choose Color Theme",
+        "category": "Dusk Forge"
       }
     ],
     "snippets": [
@@ -164,7 +174,9 @@
     "onCommand:duskForge.developerSetup",
     "onCommand:duskForge.fileProblems",
     "onCommand:duskForge.openProblems",
-    "onCommand:duskForge.quickFix"
+    "onCommand:duskForge.quickFix",
+    "onCommand:duskForge.preview",
+    "onCommand:duskForge.chooseTheme"
   ],
   "homepage": "https://github.com/Yasowant/my-extension#readme"
 }
