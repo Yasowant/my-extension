@@ -26,6 +26,10 @@ async function troubleshoot() {
     'Dusk Forge defaults to grammar colours. Review matching theme-specific customizations when colours differ.',
     `TextMate customizations present: ${Object.keys(tokens).length ? 'yes' : 'no'}`,
     `Semantic customizations present: ${Object.keys(semanticTokens).length ? 'yes — review global and theme-specific enabled/rules entries' : 'no'}`, '',
+    '## Selection and copying',
+    'Dusk Forge 1.5.1 strengthens active and inactive selections. If selection colours still differ, review workbench.colorCustomizations in user and workspace settings.',
+    'Run Dusk Forge: Copy with Syntax Highlighting to use VS Code’s formatted copy command. The destination app must support formatted HTML paste; plain-text fields discard colours.',
+    '',
     '## Suggested checks',
     ...(scope?.languageId === 'javascript' || scope?.languageId === 'typescript' ? ['If this file contains JSX tags, select JavaScript React or TypeScript React as its language mode.'] : []),
     ...(semantic === true || semanticTokens.enabled === true ? ['Semantic highlighting is explicitly enabled in at least one setting. It may override HTTP method grammar colours; inspect matching theme overrides below before changing settings.'] : []),
@@ -99,6 +103,9 @@ async function problems() {
 }
 function activate(context) {
   const handlers = {
+    'duskForge.copyHighlighted': () => vscode.window.activeTextEditor
+      ? vscode.commands.executeCommand('editor.action.clipboardCopyWithSyntaxHighlightingAction')
+      : vscode.window.showInformationMessage('Open a code file and select the text you want to copy first.'),
     'duskForge.preview': preview,
     'duskForge.chooseTheme': () => vscode.commands.executeCommand('workbench.action.selectTheme'),
     'duskForge.troubleshoot': troubleshoot,
