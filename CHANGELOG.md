@@ -1,3 +1,10 @@
+## 1.5.1 — 2026-10-18
+
+- Improved active/inactive selection visibility in both themes while retaining syntax contrast.
+- Added Copy with Syntax Highlighting command and selection context-menu action.
+- Refined matching-text borders, minimap markers and multiple-cursor colours.
+- Added selection visibility and formatted-copy command regression checks.
+
 ## 1.5.0 — 2026-10-09
 
 - Added native code previews for React, Angular, Express, SQL and JSON.

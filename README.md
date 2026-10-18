@@ -1,3 +1,10 @@
+## New in 1.5.1
+
+- Stronger blue selection backgrounds in Dark and Light, with a quieter selection when the editor loses focus.
+- Clearer matching-text borders, selection markers in the minimap and distinct primary/secondary cursor colours on supported VS Code versions.
+- **Dusk Forge: Copy with Syntax Highlighting** uses VS Code's formatted-copy command. Select code, then use the Command Palette or the editor context menu. Colours survive only in destinations that support HTML/rich-text paste. Plain-text editors cannot retain them.
+- User/workspace `workbench.colorCustomizations` can override these theme colours. Check existing overrides if the update looks unchanged.
+
 ## New in 1.5.0
 
 - Run **Dusk Forge: Preview Code** to open an editable, unsaved React, Angular, Express, PostgreSQL or JSON sample in your editor. Samples are never executed and require no database connection.
@@ -81,7 +88,7 @@ React hook, Next.js API and `use client` / `use server` scopes are preserved fro
 | --- | --- | --- |
 | Editor | `#141C28` | `#F7F8FA` |
 | Text | `#DCE4EE` | `#273344` |
-| Comments | `#94A3B8` | `#566273` |
+| Comments | `#94A3B8` | `#4F5B6C` |
 | Keywords | `#F0A078` | `#A33F26` |
 | Functions | `#EBC27C` | `#805700` |
 | Strings | `#A8CC8C` | `#3C6527` |

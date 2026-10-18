@@ -2,7 +2,7 @@
   "name": "ember-dusk-yasowant",
   "displayName": "Dusk Forge",
   "description": "Dusk Forge dark and light themes for React, JSX and TypeScript, with distinct JSX text and HTTP method colours, coding snippets and developer troubleshooting.",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "publisher": "yasowant",
   "license": "MIT",
   "icon": "images/icon.png",
@@ -127,6 +127,11 @@
         "command": "duskForge.chooseTheme",
         "title": "Choose Color Theme",
         "category": "Dusk Forge"
+      },
+      {
+        "command": "duskForge.copyHighlighted",
+        "title": "Copy with Syntax Highlighting",
+        "category": "Dusk Forge"
       }
     ],
     "snippets": [
@@ -158,7 +163,16 @@
         "language": "typescriptreact",
         "path": "./snippets/web.json"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "duskForge.copyHighlighted",
+          "when": "editorTextFocus && editorHasSelection",
+          "group": "9_cutcopypaste@20"
+        }
+      ]
+    }
   },
   "scripts": {
     "test": "node tests/highlighting.cjs && node tests/contrast.cjs && node tests/toolkit.cjs"
@@ -176,7 +190,8 @@
     "onCommand:duskForge.openProblems",
     "onCommand:duskForge.quickFix",
     "onCommand:duskForge.preview",
-    "onCommand:duskForge.chooseTheme"
+    "onCommand:duskForge.chooseTheme",
+    "onCommand:duskForge.copyHighlighted"
   ],
   "homepage": "https://github.com/Yasowant/my-extension#readme"
 }
