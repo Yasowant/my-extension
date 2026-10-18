@@ -106,11 +106,11 @@
     "editor.foreground": "#DCE4EE",
     "editorLineNumber.foreground": "#78889F",
     "editorLineNumber.activeForeground": "#8FBDF2",
-    "editorCursor.foreground": "#F0A078",
+    "editorCursor.foreground": "#8FBDF2",
     "editorCursor.background": "#141C28",
-    "editor.selectionBackground": "#47658C25",
+    "editor.selectionBackground": "#243852",
     "editor.selectionHighlightBackground": "#8FBDF20C",
-    "editor.inactiveSelectionBackground": "#47658C18",
+    "editor.inactiveSelectionBackground": "#223047",
     "editor.wordHighlightBackground": "#EBC27C0C",
     "editor.wordHighlightStrongBackground": "#7DCDBB0C",
     "editor.findMatchBackground": "#EBC27C0C",
@@ -318,7 +318,7 @@
     "charts.foreground": "#DCE4EE",
     "charts.lines": "#3C4A60",
     "minimap.findMatchHighlight": "#EBC27C",
-    "minimap.selectionHighlight": "#354861",
+    "minimap.selectionHighlight": "#8FBDF2",
     "minimap.errorHighlight": "#F08080",
     "minimap.warningHighlight": "#E8BC70",
     "minimapSlider.background": "#3C4A604D",
@@ -351,13 +351,13 @@
     "panelInput.background": "#1C2635",
     "editor.findMatchBorder": "#EBC27C",
     "editor.findMatchHighlightBorder": "#EBC27C66",
-    "editor.wordHighlightBorder": "#8FBDF280",
+    "editor.wordHighlightBorder": "#8FBDF2",
     "editor.wordHighlightStrongBorder": "#7DCDBB80",
     "editor.inlayHint.foreground": "#94A3B8",
     "editor.inlayHint.background": "#263449",
     "editorBracketPairGuide.background1": "#344256",
     "editorBracketPairGuide.activeBackground1": "#8FBDF2",
-    "editor.selectionHighlightBorder": "#8FBDF280",
+    "editor.selectionHighlightBorder": "#8FBDF2",
     "editorError.border": "#F0808080",
     "editorWarning.border": "#EBC27C80",
     "editorInfo.border": "#8FBDF280",
@@ -371,7 +371,12 @@
     "mergeEditor.conflict.unhandledFocused.border": "#F08080",
     "mergeEditor.conflict.handledFocused.border": "#7DCDBB",
     "diffEditor.insertedTextBorder": "#7DCDBB80",
-    "diffEditor.removedTextBorder": "#F0808080"
+    "diffEditor.removedTextBorder": "#F0808080",
+    "editor.wordHighlightTextBorder": "#8FBDF2",
+    "editor.wordHighlightTextBackground": "#8FBDF20C",
+    "editorOverviewRuler.selectionHighlightForeground": "#8FBDF2B0",
+    "editorMultiCursor.primary.foreground": "#8FBDF2",
+    "editorMultiCursor.secondary.foreground": "#EBC27C"
   },
   "tokenColors": [
     {
@@ -886,7 +891,7 @@
       }
     },
     {
-      "name": "HTTP verb — GET",
+      "name": "HTTP verb \u2014 GET",
       "scope": [
         "entity.name.function.http-verb.get.ember",
         "constant.language.http-verb.get.ember",
@@ -898,7 +903,7 @@
       }
     },
     {
-      "name": "HTTP verb — POST",
+      "name": "HTTP verb \u2014 POST",
       "scope": [
         "entity.name.function.http-verb.post.ember",
         "constant.language.http-verb.post.ember",
@@ -910,7 +915,7 @@
       }
     },
     {
-      "name": "HTTP verb — PUT",
+      "name": "HTTP verb \u2014 PUT",
       "scope": [
         "entity.name.function.http-verb.put.ember",
         "constant.language.http-verb.put.ember",
@@ -922,7 +927,7 @@
       }
     },
     {
-      "name": "HTTP verb — PATCH",
+      "name": "HTTP verb \u2014 PATCH",
       "scope": [
         "entity.name.function.http-verb.patch.ember",
         "constant.language.http-verb.patch.ember",
@@ -934,7 +939,7 @@
       }
     },
     {
-      "name": "HTTP verb — DELETE",
+      "name": "HTTP verb \u2014 DELETE",
       "scope": [
         "entity.name.function.http-verb.delete.ember",
         "constant.language.http-verb.delete.ember",
@@ -946,7 +951,7 @@
       }
     },
     {
-      "name": "HTTP verb — OTHER",
+      "name": "HTTP verb \u2014 OTHER",
       "scope": [
         "entity.name.function.http-verb.other.ember",
         "constant.language.http-verb.other.ember",
@@ -978,7 +983,7 @@
       }
     },
     {
-      "name": "Directives — use client / use server",
+      "name": "Directives \u2014 use client / use server",
       "scope": [
         "keyword.control.directive.ember"
       ],
