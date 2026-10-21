@@ -19,3 +19,7 @@ release. Third-party themes, user overrides and grammar versions can change resu
 ## Live extension-host test (1.5.0)
 
 `integration.cjs` is a VS Code extension test entry point. Launch VS Code with isolated user/extension directories and `--extensionDevelopmentPath=<repository>` plus `--extensionTestsPath=<repository>/tests/integration.cjs`. It activates the extension, checks command registration, expands every contributed snippet, checks the literal SQL `$1` and invokes Check Highlighting in a JSX editor. This requires a working graphical VS Code environment. It has not completed in the build environment; do not count its presence as a passing test.
+
+## Isolated editor runner (1.6.0)
+
+Run `npm run test:integration` to download stable VS Code and test activation, command registration, snippet expansion, selection ranges, theme configuration and the diagnostic report in an isolated profile. Set `VSCODE_EXECUTABLE` to use an existing VS Code executable. Linux requires a display (for example `xvfb-run -a npm run test:integration`). This is not a pixel-level visual test or a rich-text paste test. The local macOS host currently exits before tests run; there is no passing live-editor result yet.

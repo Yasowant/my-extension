@@ -15,7 +15,7 @@ for(const g of pkg.contributes.grammars)grammars[g.scopeName]=root+'/'+g.path;
 (async()=>{
 await onig.loadWASM(fs.readFileSync(require.resolve('vscode-oniguruma/release/onig.wasm')).buffer);
 let checks=0;
-for(const themeName of ['dark','light']){
+for(const themeName of ['dark','light','high-contrast']){
 const theme=JSON.parse(fs.readFileSync(root+'/themes/dusk-forge-'+themeName+'.json'));
 const registry=new tm.Registry({onigLib:Promise.resolve({createOnigScanner:s=>new onig.OnigScanner(s),createOnigString:s=>new onig.OnigString(s)}),theme:{settings:[{settings:{foreground:theme.colors['editor.foreground'],background:theme.colors['editor.background']}},...theme.tokenColors]},loadGrammar:async scope=>grammars[scope]?tm.parseRawGrammar(fs.readFileSync(grammars[scope],'utf8'),grammars[scope]):null,getInjections:scope=>pkg.contributes.grammars.filter(g=>g.injectTo.includes(scope)).map(g=>g.scopeName)});
 for(const scope of ['source.js','source.js.jsx','source.ts','source.tsx']){
@@ -76,5 +76,5 @@ for(const [scope,line,word,expected] of cases){
 }
 assert.equal(theme.semanticHighlighting,false,'Semantic overlays must be opt-in to preserve HTTP token colours');
 }
-console.log(`${checks} real TextMate token colour and exclusion checks passed across JS, JSX, TS, TSX and both themes.`);
+console.log(`${checks} real TextMate token colour and exclusion checks passed across JS, JSX, TS, TSX and all three themes.`);
 })().catch(e=>{console.error(e);process.exit(1)});

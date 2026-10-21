@@ -4,13 +4,13 @@ const handlers={},calls=[],reports=[],messages=[];let pick,diagnostics=[],during
 const start={line:2,compareTo:()=>0};const doc={uri:'file:///example.ts',languageId:'typescript',isClosed:false,version:1};
 const editor={document:doc,revealRange:r=>calls.push(['reveal',r])};
 const api={
- workspace:{getConfiguration:section=>({get:(key,fallback)=>key==='colorTheme'?'Dusk Forge Dark':key==='semanticHighlighting.enabled'?true:fallback}),openTextDocument:async x=>{reports.push(x.content);return x;}},
+ workspace:{getConfiguration:section=>({inspect:key=>key==='colorCustomizations'?{workspaceValue:{'editor.selectionBackground':'#123456'}}:{},get:(key,fallback)=>key==='colorTheme'?'Dusk Forge Dark':key==='semanticHighlighting.enabled'?true:fallback}),openTextDocument:async x=>{reports.push(x.content);return x;}},
  window:{activeTextEditor:editor,showTextDocument:async()=>editor,showQuickPick:async items=>{if(duringPick)duringPick();return pick===undefined?undefined:items[pick];},showInformationMessage:async m=>{messages.push(m);return infoAction;},showErrorMessage:async m=>messages.push(m)},
  commands:{registerCommand:(id,fn)=>{handlers[id]=fn;return {dispose(){}};},executeCommand:async(...args)=>calls.push(args)},
  languages:{getDiagnostics:()=>diagnostics},DiagnosticSeverity:{Error:0,Warning:1},Selection:class{constructor(a,b){this.start=a;this.end=b;}}
 };const sandbox={require:n=>{assert.equal(n,'vscode');return api;},module:{exports:{}}};vm.runInNewContext(fs.readFileSync(root+'/src/extension.js','utf8'),sandbox);const context={subscriptions:[]};sandbox.module.exports.activate(context);
 (async()=>{
-assert.equal(context.subscriptions.length,8);for(const c of manifest.contributes.commands)assert(handlers[c.command]);
+assert.equal(context.subscriptions.length,10);for(const c of manifest.contributes.commands)assert(handlers[c.command]);
 await handlers['duskForge.troubleshoot']();assert(reports[0].includes('not the final result'));assert(reports[0].includes('Dusk Forge Dark'));
 api.window.activeTextEditor=undefined;await handlers['duskForge.fileProblems']();await handlers['duskForge.quickFix']();await handlers['duskForge.copyHighlighted']();assert.equal(calls.length,0);assert(messages.some(x=>x.includes('Open a code file')));
 api.window.activeTextEditor=editor;await handlers['duskForge.fileProblems']();assert(messages.some(x=>x.includes('does not guarantee')));
@@ -28,6 +28,10 @@ await handlers['duskForge.chooseTheme']();assert.equal(calls.at(-1)[0],'workbenc
 for(let i=0;i<3;i++){pick=i;await handlers['duskForge.developerSetup']();assert.equal(calls.at(-1)[0],['duskForge.preview','workbench.action.selectTheme','duskForge.troubleshoot'][i]);}
 assert(reports[0].includes('Semantic highlighting is explicitly enabled'));
 await handlers['duskForge.copyHighlighted']();assert.equal(calls.at(-1)[0],'editor.action.clipboardCopyWithSyntaxHighlightingAction');
+assert(reports[0].includes('workspaceValue: editor.selectionBackground'));
+await handlers['duskForge.walkthrough']();assert.equal(calls.at(-1)[1],'yasowant.ember-dusk-yasowant#duskForge.start');
+await handlers['duskForge.highlightSettings']();assert.equal(calls.at(-1)[0],'workbench.action.openSettings');
+for(const step of manifest.contributes.walkthroughs[0].steps){assert(fs.existsSync(path.join(root,step.media.image)));assert(step.completionEvents.every(e=>handlers[e.replace('onCommand:','')]));}
 for(const s of manifest.contributes.snippets){const snippets=JSON.parse(fs.readFileSync(path.join(root,s.path)));assert(Object.keys(snippets).length);for(const value of Object.values(snippets)){assert(value.prefix.startsWith('df'));assert(Array.isArray(value.body));}}
 assert(require('../snippets/web.json')['Parameterized PostgreSQL query'].body.join('\n').includes('\\$1'));
 console.log('Toolkit tests passed: command registration, settings report, empty editor, no diagnostics, cancellation, diagnostic navigation, review-only quick fixes, guided setup, five previews, preview cancellation, opt-in theme picker and snippet manifests.');

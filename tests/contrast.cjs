@@ -4,7 +4,7 @@ const luminance=v=>v.map(x=>{x/=255;return x<=.04045?x/12.92:((x+.055)/1.055)**2
 const ratio=(a,b)=>{const x=luminance(a),y=luminance(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)};
 const composite=(h,b)=>{const a=h.length===9?parseInt(h.slice(7),16)/255:1;return rgb(h).map((x,i)=>x*a+b[i]*(1-a));};
 let checks=0,min=100;
-for(const mode of ['dark','light']){
+for(const mode of ['dark','light','high-contrast']){
 const file=path.join(__dirname,'../themes/dusk-forge-'+mode+'.json'),t=JSON.parse(fs.readFileSync(file)),base=rgb(t.colors['editor.background']);
 assert(ratio(rgb(t.colors['editor.selectionBackground']),base)>=1.25, mode+' active selection must be visibly distinct from editor');
 assert(ratio(rgb(t.colors['editor.selectionBackground']),rgb(t.colors['editor.inactiveSelectionBackground']))>=1.1, mode+' active and inactive selections must differ');

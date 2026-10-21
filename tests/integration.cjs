@@ -14,5 +14,14 @@ exports.run=async()=>{
  }
  const doc=await vscode.workspace.openTextDocument({language:'javascriptreact',content:'const view = <p>dasdasdasd</p>;'});await vscode.window.showTextDocument(doc);
  await vscode.commands.executeCommand('duskForge.troubleshoot');assert(vscode.window.activeTextEditor.document.getText().includes('javascriptreact'));
- fs.writeFileSync(path.join(ext.extensionPath,'../../integration-150-result.json'),JSON.stringify({passed:true,checks:'Extension activation, all command registration, all contributed snippet expansions, literal SQL parameter, live troubleshooting command'}));
+ for (const theme of ext.packageJSON.contributes.themes) {
+  await vscode.workspace.getConfiguration('workbench').update('colorTheme',theme.id,vscode.ConfigurationTarget.Global);
+  assert.equal(vscode.workspace.getConfiguration('workbench').get('colorTheme'),theme.id);
+ }
+ const codeEditor=await vscode.window.showTextDocument(doc);
+ codeEditor.selection=new vscode.Selection(0,0,0,5);
+ assert.equal(doc.getText(codeEditor.selection),'const');
+ assert(registered.includes('editor.action.clipboardCopyWithSyntaxHighlightingAction'));
+ assert(ext.packageJSON.contributes.walkthroughs[0].steps.length===4);
+ fs.writeFileSync(path.join(ext.extensionPath,'../../integration-160-result.json'),JSON.stringify({passed:true,checks:'Extension activation, all command registration, all contributed snippet expansions, literal SQL parameter, live troubleshooting command'}));
 };
