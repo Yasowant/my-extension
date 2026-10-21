@@ -9,6 +9,17 @@ function configurationScope() {
   const document = vscode.window.activeTextEditor?.document;
   return document ? { uri: document.uri, languageId: document.languageId } : undefined;
 }
+function settingSources(section, key, scope) {
+  const inspected = vscode.workspace.getConfiguration(section, scope).inspect(key);
+  if (!inspected) return `${section}.${key}: no registered setting information`;
+  const layers = ['globalValue', 'workspaceValue', 'workspaceFolderValue', 'globalLanguageValue', 'workspaceLanguageValue', 'workspaceFolderLanguageValue'];
+  const found = layers.filter(layer => inspected[layer] !== undefined).map(layer => {
+    const value = inspected[layer];
+    const summary = value && typeof value === 'object' ? Object.keys(value).join(', ') || '(empty)' : String(value);
+    return `${layer}: ${summary}`;
+  });
+  return `${section}.${key}: ${found.join('; ') || 'no user/workspace override'}`;
+}
 async function troubleshoot() {
   const scope = configurationScope();
   const theme = vscode.workspace.getConfiguration('workbench').get('colorTheme', 'Unknown');
@@ -19,13 +30,19 @@ async function troubleshoot() {
     '# Dusk Forge: Highlighting check', '',
     `Active theme: ${theme}`, `Language mode: ${scope?.languageId || 'No active editor'}`,
     `Semantic highlighting setting: ${semantic}`, '',
-    theme.startsWith('Dusk Forge') ? 'A Dusk Forge theme is selected.' : 'Select Dusk Forge Dark or Light using Preferences: Color Theme.',
+    theme.startsWith('Dusk Forge') ? 'A Dusk Forge theme is selected.' : 'Select Dusk Forge Dark, Light or High Contrast using Preferences: Color Theme.',
     'The editor setting above is not the final result: semantic colour customizations can override it.',
     `Global semantic customization enabled: ${semanticTokens.enabled ?? 'not set'}`,
     ...Object.entries(semanticTokens).filter(([key]) => key.startsWith('[')).map(([key,value]) => `${key} semantic enabled: ${value?.enabled ?? 'not set'} (check whether this selector matches your active theme)`),
     'Dusk Forge defaults to grammar colours. Review matching theme-specific customizations when colours differ.',
     `TextMate customizations present: ${Object.keys(tokens).length ? 'yes' : 'no'}`,
     `Semantic customizations present: ${Object.keys(semanticTokens).length ? 'yes — review global and theme-specific enabled/rules entries' : 'no'}`, '',
+    '## Where overrides are configured',
+    ...['semanticHighlighting.enabled', 'tokenColorCustomizations', 'semanticTokenColorCustomizations'].map(key => settingSources('editor', key, scope)),
+    settingSources('workbench', 'colorCustomizations', scope),
+    'Object entries above list configured keys, not a claim that every theme selector matches. Review matching selectors in your settings.',
+    'Run Dusk Forge: Open Highlighting Settings to review overrides.',
+    '',
     '## Selection and copying',
     'Dusk Forge 1.5.1 strengthens active and inactive selections. If selection colours still differ, review workbench.colorCustomizations in user and workspace settings.',
     'Run Dusk Forge: Copy with Syntax Highlighting to use VS Code’s formatted copy command. The destination app must support formatted HTML paste; plain-text fields discard colours.',
@@ -42,7 +59,8 @@ async function troubleshoot() {
     'Merge these entries into any existing editor.semanticTokenColorCustomizations setting:',
     '```json', '"editor.semanticTokenColorCustomizations": {',
     '  "[Dusk Forge Dark]": { "enabled": false },',
-    '  "[Dusk Forge Light]": { "enabled": false }', '}', '```', '',
+    '  "[Dusk Forge Light]": { "enabled": false },',
+    '  "[Dusk Forge High Contrast]": { "enabled": false }', '}', '```', '',
     'This report only reads settings; it does not change them or upload project data.'
   ].join('\n'));
 }
@@ -58,13 +76,13 @@ async function preview() {
   if (!sample) return;
   const document = await vscode.workspace.openTextDocument({ language: sample.language, content: sample.content });
   await vscode.window.showTextDocument(document, { preview: true });
-  const action = await vscode.window.showInformationMessage('Preview uses your current theme. Choose Dusk Forge Dark or Dusk Forge Light in the theme picker.', 'Choose Theme');
+  const action = await vscode.window.showInformationMessage('Preview uses your current theme. Choose Dusk Forge Dark, Dusk Forge Light or Dusk Forge High Contrast in the theme picker.', 'Choose Theme');
   if (action === 'Choose Theme') await vscode.commands.executeCommand('workbench.action.selectTheme');
 }
 async function setup() {
   const choices = [
     { label: 'Preview code colours', detail: 'Open React, Angular, Express, SQL or JSON sample code.', command: 'duskForge.preview' },
-    { label: 'Choose Dark or Light', detail: 'Open the theme picker and select Dusk Forge Dark or Light.', command: 'workbench.action.selectTheme' },
+    { label: 'Choose Dark, Light or High Contrast', detail: 'Open the theme picker and select Dusk Forge Dark, Light or High Contrast.', command: 'workbench.action.selectTheme' },
     { label: 'Check highlighting', detail: 'Read your current highlighting settings and suggested checks.', command: 'duskForge.troubleshoot' },
     { label: 'JavaScript / TypeScript', detail: 'Use VS Code built-in IntelliSense and project tsconfig/jsconfig settings.', guide: 'VS Code includes JavaScript and TypeScript language support. Open your project root and use its tsconfig.json or jsconfig.json. Run your project’s existing type-check script. Dusk Forge does not install dependencies or execute project scripts.' },
     { label: 'ESLint', detail: 'View the Microsoft ESLint extension; project configuration is required.', extension: 'dbaeumer.vscode-eslint' },
@@ -103,6 +121,8 @@ async function problems() {
 }
 function activate(context) {
   const handlers = {
+    'duskForge.walkthrough': () => vscode.commands.executeCommand('workbench.action.openWalkthrough', 'yasowant.ember-dusk-yasowant#duskForge.start', false),
+    'duskForge.highlightSettings': () => vscode.commands.executeCommand('workbench.action.openSettings', '@modified'),
     'duskForge.copyHighlighted': () => vscode.window.activeTextEditor
       ? vscode.commands.executeCommand('editor.action.clipboardCopyWithSyntaxHighlightingAction')
       : vscode.window.showInformationMessage('Open a code file and select the text you want to copy first.'),
