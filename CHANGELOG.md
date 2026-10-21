@@ -1,3 +1,10 @@
+## 1.6.0 — 2026-10-21
+
+- Added optional High Contrast theme and tests across all three palettes.
+- Added native Get Started walkthrough with four actionable steps.
+- Added configuration-layer reporting and modified-settings shortcut.
+- Improved Marketplace introduction and documented limitations.
+
 ## 1.5.1 — 2026-10-18
 
 - Improved active/inactive selection visibility in both themes while retaining syntax contrast.

@@ -9,3 +9,7 @@ preview/**
 tests/**
 examples/**
 package-lock.json
+
+.vscode-test/**
+.test-profile/**
+.test-extensions/**

@@ -1,3 +1,16 @@
+# Dusk Forge — readable code, clear selections
+
+Three VS Code themes for React, TypeScript, Node.js and SQL: **Dark**, **Light**, and **High Contrast**. Includes code previews, editable snippets and tools to diagnose highlighting settings.
+
+[Install from Marketplace](https://marketplace.visualstudio.com/items?itemName=yasowant.ember-dusk-yasowant)
+
+## New in 1.6.0
+
+- **Dusk Forge High Contrast** adds a deeper editor background, visible focus and panel borders, brighter line numbers and outlined active lines. It is optional; existing theme selections remain unchanged. This is not a certification of every accessibility state.
+- Run **Dusk Forge: Get Started** for a four-step walkthrough: choose a theme, preview code, diagnose highlighting and explore tools.
+- **Check Highlighting** now lists which user, workspace, folder and language configuration layers contain overrides. Theme selector keys are reported for review, not assumed to apply.
+- **Open Highlighting Settings** opens modified settings for review. Nothing is reset automatically.
+
 ## New in 1.5.1
 
 - Stronger blue selection backgrounds in Dark and Light, with a quieter selection when the editor loses focus.

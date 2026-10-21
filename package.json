@@ -1,8 +1,8 @@
 {
   "name": "ember-dusk-yasowant",
   "displayName": "Dusk Forge",
-  "description": "Dusk Forge dark and light themes for React, JSX and TypeScript, with distinct JSX text and HTTP method colours, coding snippets and developer troubleshooting.",
-  "version": "1.5.1",
+  "description": "Dark, light and high-contrast themes for React, TypeScript and SQL, with readable selections, code previews, snippets and highlighting diagnostics.",
+  "version": "1.6.0",
   "publisher": "yasowant",
   "license": "MIT",
   "icon": "images/icon.png",
@@ -33,7 +33,8 @@
     "jsx",
     "tsx",
     "syntax highlighting",
-    "snippets"
+    "snippets",
+    "high contrast"
   ],
   "galleryBanner": {
     "color": "#141C28",
@@ -59,6 +60,12 @@
         "label": "Dusk Forge Light",
         "uiTheme": "vs",
         "path": "./themes/dusk-forge-light.json"
+      },
+      {
+        "id": "Dusk Forge High Contrast",
+        "label": "Dusk Forge High Contrast",
+        "uiTheme": "hc-black",
+        "path": "./themes/dusk-forge-high-contrast.json"
       }
     ],
     "grammars": [
@@ -132,6 +139,16 @@
         "command": "duskForge.copyHighlighted",
         "title": "Copy with Syntax Highlighting",
         "category": "Dusk Forge"
+      },
+      {
+        "command": "duskForge.walkthrough",
+        "title": "Get Started",
+        "category": "Dusk Forge"
+      },
+      {
+        "command": "duskForge.highlightSettings",
+        "title": "Open Highlighting Settings",
+        "category": "Dusk Forge"
       }
     ],
     "snippets": [
@@ -172,14 +189,73 @@
           "group": "9_cutcopypaste@20"
         }
       ]
-    }
+    },
+    "walkthroughs": [
+      {
+        "id": "duskForge.start",
+        "title": "Get started with Dusk Forge",
+        "description": "Choose a theme, preview your code, and check highlighting.",
+        "steps": [
+          {
+            "id": "theme",
+            "title": "1. Choose your theme",
+            "description": "Select Dark, Light or High Contrast. Preview colours before confirming.\n[Choose theme](command:duskForge.chooseTheme)",
+            "media": {
+              "image": "images/react-jsx-preview.png",
+              "altText": "Rendered React example in Dusk Forge Dark and Light."
+            },
+            "completionEvents": [
+              "onCommand:duskForge.chooseTheme"
+            ]
+          },
+          {
+            "id": "preview",
+            "title": "2. Preview real code",
+            "description": "Open an unsaved sample for React, Angular, Express, SQL or JSON. Samples are not executed.\n[Preview code](command:duskForge.preview)",
+            "media": {
+              "image": "images/react-jsx-preview.png",
+              "altText": "Rendered React example in Dusk Forge Dark and Light."
+            },
+            "completionEvents": [
+              "onCommand:duskForge.preview"
+            ]
+          },
+          {
+            "id": "check",
+            "title": "3. Resolve colour differences",
+            "description": "Inspect language mode and settings overrides. Your settings are never changed automatically.\n[Check highlighting](command:duskForge.troubleshoot)",
+            "media": {
+              "image": "images/react-jsx-preview.png",
+              "altText": "Rendered React example in Dusk Forge Dark and Light."
+            },
+            "completionEvents": [
+              "onCommand:duskForge.troubleshoot"
+            ]
+          },
+          {
+            "id": "tools",
+            "title": "4. Explore developer tools",
+            "description": "Discover snippets and existing language-tool diagnostics.\n[Explore tools](command:duskForge.developerSetup)",
+            "media": {
+              "image": "images/react-jsx-preview.png",
+              "altText": "Rendered React example in Dusk Forge Dark and Light."
+            },
+            "completionEvents": [
+              "onCommand:duskForge.developerSetup"
+            ]
+          }
+        ]
+      }
+    ]
   },
   "scripts": {
-    "test": "node tests/highlighting.cjs && node tests/contrast.cjs && node tests/toolkit.cjs"
+    "test": "node tests/highlighting.cjs && node tests/contrast.cjs && node tests/toolkit.cjs",
+    "test:integration": "node tests/run-integration.cjs"
   },
   "devDependencies": {
-    "vscode-textmate": "9.3.2",
-    "vscode-oniguruma": "2.0.1"
+    "@vscode/test-electron": "3.1.0",
+    "vscode-oniguruma": "2.0.1",
+    "vscode-textmate": "9.3.2"
   },
   "main": "./src/extension.js",
   "browser": "./src/extension.js",
@@ -191,7 +267,9 @@
     "onCommand:duskForge.quickFix",
     "onCommand:duskForge.preview",
     "onCommand:duskForge.chooseTheme",
-    "onCommand:duskForge.copyHighlighted"
+    "onCommand:duskForge.copyHighlighted",
+    "onCommand:duskForge.walkthrough",
+    "onCommand:duskForge.highlightSettings"
   ],
   "homepage": "https://github.com/Yasowant/my-extension#readme"
 }
